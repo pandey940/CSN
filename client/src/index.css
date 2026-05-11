@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3626cc;
+  --color-secondary: #9d4300;
+  --color-background: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-on-surface: #191c1d;
+  --color-on-background: #191c1d;
+
+  --font-headline: "Epilogue", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  --font-label: "Space Grotesk", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body), system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+}
+
+.hero-gradient {
+    background: radial-gradient(circle at top right, rgba(54, 38, 204, 0.05), transparent),
+                radial-gradient(circle at bottom left, rgba(157, 67, 0, 0.05), transparent);
+}
+
+.glass-nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}

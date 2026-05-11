@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600&amp;family=Space_Grotesk:wght@400;500;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-fixed-variant": "#005236",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "surface-dim": "#d9dadb",
+            "secondary-fixed-dim": "#ffb690",
+            "outline": "#777587",
+            "tertiary": "#005338",
+            "secondary-container": "#fd761a",
+            "on-tertiary-fixed": "#002113",
+            "on-secondary-fixed": "#341100",
+            "error": "#ba1a1a",
+            "background": "#f8f9fa",
+            "on-surface-variant": "#464555",
+            "secondary": "#9d4300",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface-container-high": "#e7e8e9",
+            "surface": "#f8f9fa",
+            "inverse-primary": "#c3c0ff",
+            "on-background": "#191c1d",
+            "primary": "#3626cc",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#e2dfff",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-secondary-container": "#5c2400",
+            "surface-container-highest": "#e1e3e4",
+            "primary-container": "#5046e4",
+            "secondary-fixed": "#ffdbca",
+            "surface-bright": "#f8f9fa",
+            "outline-variant": "#c7c4d8",
+            "on-surface": "#191c1d",
+            "inverse-on-surface": "#f0f1f2",
+            "inverse-surface": "#2e3132",
+            "on-primary-fixed": "#0f0069",
+            "surface-container": "#edeeef",
+            "on-secondary-fixed-variant": "#783200",
+            "on-primary-fixed-variant": "#3423cb",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#006e4b",
+            "surface-variant": "#e1e3e4",
+            "on-primary-container": "#dad7ff",
+            "on-tertiary-container": "#67f4b7",
+            "surface-container-low": "#f3f4f5",
+            "tertiary-fixed": "#6ffbbe",
+            "surface-tint": "#4e44e2"
+          },
+          fontFamily: {
+            "headline": ["Epilogue"],
+            "body": ["Manrope"],
+            "label": ["Space Grotesk"]
+          },
+          borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .glass-nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .ambient-shadow {
+      box-shadow: 0 24px 48px -12px rgba(25, 28, 29, 0.04);
+    }
+  </style>
+</head>
+
+<body class="bg-surface font-body text-on-surface">
+  <!-- TopNavBar -->
+  <nav
+    class="bg-white/85 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-indigo-500/10 shadow-sm shadow-indigo-900/5">
+    <div class="flex justify-between items-center w-full px-6 py-3 max-w-full mx-auto">
+      <div class="flex items-center gap-8">
+        <span class="text-xl font-black text-indigo-700 tracking-tighter font-headline">The Academic Curator</span>
+        <div
+          class="hidden md:flex items-center bg-surface-container-low px-4 py-2 rounded-lg group focus-within:bg-white focus-within:shadow-sm transition-all duration-300">
+          <span class="material-symbols-outlined text-outline text-sm mr-2" data-icon="search">search</span>
+          <input class="bg-transparent border-none focus:ring-0 text-sm font-label w-64"
+            placeholder="Search curated notes..." type="text" />
+        </div>
+      </div>
+      <div class="flex items-center gap-6">
+        <a class="text-slate-600 font-medium hover:bg-slate-100 transition-colors px-3 py-1.5 rounded-md font-headline"
+          href="index.html">Home</a>
+        <a class="text-slate-600 font-medium hover:bg-slate-100 transition-colors px-3 py-1.5 rounded-md font-headline"
+          href="search.html">Search</a>
+        <button
+          class="bg-primary text-on-primary px-5 py-2 rounded-lg font-headline font-bold text-sm hover:opacity-90 active:scale-95 transition-all">Upload</button>
+        <div
+          class="w-10 h-10 rounded-full bg-indigo-100 border-2 border-primary/20 flex items-center justify-center text-indigo-700 font-bold text-indigo-700 dark:text-indigo-300 font-bold border-b-2 border-indigo-600">
+          JD
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="flex min-h-screen">
+    <!-- SideNavBar -->
+    <aside class="h-screen w-64 fixed left-0 top-0 pt-16 bg-surface-container-low flex flex-col gap-1 py-4 z-40">
+      <div class="px-6 py-4 mb-4">
+        <h2 class="font-headline font-bold text-indigo-600 text-lg">Dashboard</h2>
+        <p class="font-label text-xs uppercase tracking-wider text-slate-500">Academic Archive</p>
+      </div>
+      <nav class="flex flex-col gap-1">
+        <a class="text-slate-500 px-4 py-2 mx-2 flex items-center gap-3 font-label text-sm uppercase tracking-wider hover:bg-indigo-50 transition-transform duration-200"
+          href="#">
+          <span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span> Admin
+          Panel
+        </a>
+        <a class="bg-white text-indigo-700 rounded-lg shadow-sm px-4 py-2 mx-2 flex items-center gap-3 font-label text-sm uppercase tracking-wider"
+          href="#">
+          <span class="material-symbols-outlined" data-icon="cloud_upload">cloud_upload</span> My Uploads
+        </a>
+        <a class="text-slate-500 px-4 py-2 mx-2 flex items-center gap-3 font-label text-sm uppercase tracking-wider hover:bg-indigo-50"
+          href="#">
+          <span class="material-symbols-outlined" data-icon="bookmark">bookmark</span> Saved Notes
+        </a>
+        <a class="text-slate-500 px-4 py-2 mx-2 flex items-center gap-3 font-label text-sm uppercase tracking-wider hover:bg-indigo-50"
+          href="#">
+          <span class="material-symbols-outlined" data-icon="history">history</span> History
+        </a>
+        <div class="my-4 border-t border-indigo-500/5 mx-6"></div>
+        <a class="text-slate-500 px-4 py-2 mx-2 flex items-center gap-3 font-label text-sm uppercase tracking-wider hover:bg-indigo-50"
+          href="#">
+          <span class="material-symbols-outlined" data-icon="school">school</span> College
+        </a>
+        <a class="text-slate-500 px-4 py-2 mx-2 flex items-center gap-3 font-label text-sm uppercase tracking-wider hover:bg-indigo-50"
+          href="#">
+          <span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span> Course
+        </a>
+        <a class="text-slate-500 px-4 py-2 mx-2 flex items-center gap-3 font-label text-sm uppercase tracking-wider hover:bg-indigo-50"
+          href="#">
+          <span class="material-symbols-outlined" data-icon="account_tree">account_tree</span> Branch
+        </a>
+        <a class="text-slate-500 px-4 py-2 mx-2 flex items-center gap-3 font-label text-sm uppercase tracking-wider hover:bg-indigo-50"
+          href="#">
+          <span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span> Semester
+        </a>
+        <a class="text-slate-500 px-4 py-2 mx-2 flex items-center gap-3 font-label text-sm uppercase tracking-wider hover:bg-indigo-50"
+          href="#">
+          <span class="material-symbols-outlined" data-icon="menu_book">menu_book</span> Subject
+        </a>
+      </nav>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main class="ml-64 w-full p-12 max-w-7xl">
+      <!-- Profile Header Section -->
+      <header class="mb-16">
+        <div class="flex flex-col md:flex-row gap-12 items-start">
+          <div class="relative">
+            <div
+              class="w-32 h-32 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-4xl font-headline font-black shadow-xl shadow-indigo-900/20">
+              JD
+            </div>
+            <div
+              class="absolute -bottom-2 -right-2 bg-secondary text-on-secondary w-8 h-8 rounded-full flex items-center justify-center shadow-lg">
+              <span class="material-symbols-outlined text-sm" data-icon="verified" data-weight="fill"
+                style="font-variation-settings: 'FILL' 1;">verified</span>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex justify-between items-start w-full">
+              <div>
+                <h1 class="text-5xl font-headline font-extrabold tracking-tighter text-on-surface mb-2">Julianne D.
+                  Curator</h1>
+                <p class="text-lg text-slate-500 font-body mb-6">Senior Researcher • Faculty of Advanced Engineering</p>
+                <div class="flex flex-wrap gap-3">
+                  <span
+                    class="bg-surface-variant px-4 py-1.5 rounded-full font-label text-xs uppercase tracking-widest text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm" data-icon="account_balance">account_balance</span>
+                    Stanford University
+                  </span>
+                  <span
+                    class="bg-surface-variant px-4 py-1.5 rounded-full font-label text-xs uppercase tracking-widest text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm" data-icon="psychology">psychology</span> Neural
+                    Networks
+                  </span>
+                  <span
+                    class="bg-surface-variant px-4 py-1.5 rounded-full font-label text-xs uppercase tracking-widest text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm" data-icon="calendar_month">calendar_month</span>
+                    Semester VIII
+                  </span>
+                </div>
+              </div>
+              <button
+                class="bg-surface-container-highest text-on-surface px-6 py-2 rounded-lg font-headline font-bold text-sm hover:bg-slate-200 transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm" data-icon="settings">settings</span> Account Settings
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Bento Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12">
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl ambient-shadow flex flex-col justify-between h-32 border-l-4 border-primary">
+            <p class="font-label text-xs uppercase text-slate-500 tracking-wider">Total Uploads</p>
+            <p class="text-3xl font-headline font-black text-on-surface">142</p>
+          </div>
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl ambient-shadow flex flex-col justify-between h-32 border-l-4 border-secondary">
+            <p class="font-label text-xs uppercase text-slate-500 tracking-wider">Avg. Rating</p>
+            <div class="flex items-center gap-2">
+              <p class="text-3xl font-headline font-black text-on-surface">4.8</p>
+              <span class="material-symbols-outlined text-secondary" data-icon="star" data-weight="fill"
+                style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+          </div>
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl ambient-shadow flex flex-col justify-between h-32 border-l-4 border-tertiary">
+            <p class="font-label text-xs uppercase text-slate-500 tracking-wider">Saves Received</p>
+            <p class="text-3xl font-headline font-black text-on-surface">2.4k</p>
+          </div>
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl ambient-shadow flex flex-col justify-between h-32 border-l-4 border-indigo-200">
+            <p class="font-label text-xs uppercase text-slate-500 tracking-wider">Total Downloads</p>
+            <p class="text-3xl font-headline font-black text-on-surface">8.9k</p>
+          </div>
+        </div>
+      </header>
+      <!-- Private View Tabs -->
+      <section class="mt-16">
+        <div class="flex gap-12 border-b border-indigo-500/10 mb-8">
+          <button class="pb-4 text-sm font-headline font-bold text-primary border-b-2 border-primary tracking-tight">My
+            Uploads</button>
+          <button
+            class="pb-4 text-sm font-headline font-bold text-slate-400 hover:text-on-surface transition-colors tracking-tight">Saved
+            Notes</button>
+          <button
+            class="pb-4 text-sm font-headline font-bold text-slate-400 hover:text-on-surface transition-colors tracking-tight">Download
+            History</button>
+          <button
+            class="pb-4 text-sm font-headline font-bold text-slate-400 hover:text-on-surface transition-colors tracking-tight">Preferences</button>
+        </div>
+        <!-- Bento Grid Content -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Note Card 1 -->
+          <div
+            class="group bg-surface-container-lowest rounded-xl ambient-shadow overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+            <div class="h-48 bg-slate-100 relative overflow-hidden">
+              <img class="w-full h-full object-cover" data-alt="Close up of handwritten scientific notes and diagrams"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaCLcbpj5ewG2iyyluHCrNbJ1h6pz3kC_DBOI4j8Gn2LOD_gozqdJ9gbhkWgCsmSqvkRyA0RbN4dRr-7XzqF8IXGoxzNXhf-BQYcSMKOuVcKKxIj8s9RsD1FhcHZd8FHpoRi_Dbt12mTStYaNWe7k0mKLu5SqUYlfg3g4TjGa_SgK6h77bKi3yW5vAAgaqO81tIvDyrnLsY70YybchLKB2hJvtv1Kr9VnT1BUDW42Kux-BJmtHLzk_L1hU-eTjkiUWhul4FEjUIAcD" />
+              <div class="absolute top-4 right-4 bg-tertiary/10 backdrop-blur-md px-3 py-1 rounded-full">
+                <span
+                  class="text-[10px] font-label font-bold text-tertiary-container uppercase tracking-widest">Approved</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="font-label text-[10px] uppercase tracking-widest text-slate-400 mb-2">CS-402 • Distributed
+                Systems</p>
+              <h3 class="font-headline font-bold text-lg text-on-surface mb-4 leading-snug">Raft Consensus Algorithm:
+                Visual Deep Dive</h3>
+              <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-50">
+                <div class="flex items-center gap-4 text-slate-400 text-xs font-label">
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm"
+                      data-icon="visibility">visibility</span> 1.2k</span>
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm"
+                      data-icon="download">download</span> 430</span>
+                </div>
+                <span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform"
+                  data-icon="more_vert">more_vert</span>
+              </div>
+            </div>
+          </div>
+          <!-- Note Card 2 -->
+          <div
+            class="group bg-surface-container-lowest rounded-xl ambient-shadow overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+            <div class="h-48 bg-slate-100 relative overflow-hidden">
+              <img class="w-full h-full object-cover"
+                data-alt="Architectural sketches and complex mathematical formulas"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyb5jbicToR6llbk-X0U1InbTWsVKuwI0WPGOj2JuN_DFzMWJKGy3zB-VN1J0SNT_vjtmUZROxL1TSBeNBJksuPiT5S2GGPNqAD2gEWJhX4Cr2yuVwhrx-j07FEB4UO79d32mESA_qQBSNLgXeUtm7rMMmJJTp4agbeY8Gm7sgQF9KNUBfLpKnOVoNz--yD03hVKMfeu5L6cYnEnRN7dcdLKgUV8po6ZosoS4WyyJYyGd5Igbl9Kh5F7nJ9VbG66dlR_FrL0fY-Ss8" />
+              <div class="absolute top-4 right-4 bg-secondary/10 backdrop-blur-md px-3 py-1 rounded-full">
+                <span class="text-[10px] font-label font-bold text-secondary uppercase tracking-widest">Pending
+                  Review</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="font-label text-[10px] uppercase tracking-widest text-slate-400 mb-2">ME-201 • Thermodynamics
+              </p>
+              <h3 class="font-headline font-bold text-lg text-on-surface mb-4 leading-snug">Entropy and Information
+                Theory Connections</h3>
+              <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-50">
+                <div class="flex items-center gap-4 text-slate-400 text-xs font-label">
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm"
+                      data-icon="visibility">visibility</span> 0</span>
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm"
+                      data-icon="download">download</span> 0</span>
+                </div>
+                <span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform"
+                  data-icon="more_vert">more_vert</span>
+              </div>
+            </div>
+          </div>
+          <!-- Note Card 3 -->
+          <div
+            class="group bg-surface-container-lowest rounded-xl ambient-shadow overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+            <div class="h-48 bg-slate-100 relative overflow-hidden">
+              <img class="w-full h-full object-cover" data-alt="Neat notebook with colorful diagrams and highlighters"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuASYIknugTIJYQ6AG49O7IuPOzW21kiZAhH2mLSqs6hmyG0cJ7G7jgag_mSnT1WTu1IXFjhzt0KSe6altqj-uC92nkc8gq85X3NZWv9hoaf9R-EOI1k6bvKjKxZbVfqS2Tf2w3AYGpJfZyqSK3MrQ8HrK6cPOtllbXflYYsRfx6974LepYNmHcZ0sEhPiL66BxZFp68CDMUNRIllxLXOBFxNsl8VbpOqARp8AvYWArRxvCuEplp7GRsTlrojxZs12noRLrDeC6Q12pE" />
+              <div class="absolute top-4 right-4 bg-tertiary/10 backdrop-blur-md px-3 py-1 rounded-full">
+                <span
+                  class="text-[10px] font-label font-bold text-tertiary-container uppercase tracking-widest">Approved</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="font-label text-[10px] uppercase tracking-widest text-slate-400 mb-2">MA-305 • Linear Algebra
+              </p>
+              <h3 class="font-headline font-bold text-lg text-on-surface mb-4 leading-snug">Eigenvalues in Quantum
+                Mechanics Applications</h3>
+              <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-50">
+                <div class="flex items-center gap-4 text-slate-400 text-xs font-label">
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm"
+                      data-icon="visibility">visibility</span> 3.5k</span>
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm"
+                      data-icon="download">download</span> 1.1k</span>
+                </div>
+                <span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform"
+                  data-icon="more_vert">more_vert</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Empty State / Action Card -->
+        <div
+          class="mt-12 bg-indigo-50 border-2 border-dashed border-indigo-200 rounded-2xl p-12 text-center group hover:border-primary transition-colors cursor-pointer">
+          <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <span class="material-symbols-outlined text-primary text-3xl" data-icon="add_circle" data-weight="fill"
+              style="font-variation-settings: 'FILL' 1;">add_circle</span>
+          </div>
+          <h4 class="font-headline font-bold text-xl text-on-surface">Curate a new set of notes</h4>
+          <p class="text-slate-500 font-body max-w-sm mx-auto mt-2 mb-6">Contribute to the collective knowledge of your
+            institution and build your academic reputation.</p>
+          <button
+            class="bg-primary text-on-primary px-8 py-3 rounded-lg font-headline font-bold text-sm tracking-tight shadow-lg shadow-indigo-200">Start
+            Uploading</button>
+        </div>
+      </section>
+    </main>
+  </div>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-indigo-500/10 w-full py-12 px-8 mt-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 w-full max-w-7xl mx-auto gap-12">
+      <div>
+        <span class="font-headline font-bold text-slate-900 text-2xl tracking-tighter block mb-4">The Academic
+          Curator.</span>
+        <p class="font-body text-sm text-slate-500 max-w-xs leading-relaxed">A digital archive dedicated to the
+          preservation and accessibility of student intelligence. Built for scholars, by scholars.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-8">
+        <div class="flex flex-col gap-3">
+          <p class="font-label text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Project</p>
+          <a class="font-body text-sm text-slate-500 hover:text-indigo-600 transition-colors" href="#">About Project</a>
+          <a class="font-body text-sm text-slate-500 hover:text-indigo-600 transition-colors" href="#">Privacy
+            Policy</a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <p class="font-label text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Support</p>
+          <a class="font-body text-sm text-slate-500 hover:text-indigo-600 transition-colors" href="#">Contact
+            Support</a>
+          <a class="font-body text-sm text-slate-500 hover:text-indigo-600 transition-colors" href="#">Terms of
+            Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-50 flex justify-between items-center">
+      <p class="font-body text-sm text-slate-500">© 2024 The Academic Curator. Knowledge preserved.</p>
+      <div class="flex gap-4">
+        <span class="material-symbols-outlined text-slate-300 hover:text-primary transition-colors cursor-pointer"
+          data-icon="share">share</span>
+        <span class="material-symbols-outlined text-slate-300 hover:text-primary transition-colors cursor-pointer"
+          data-icon="public">public</span>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

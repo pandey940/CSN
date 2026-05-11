@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>The Academic Curator | Academic Excellence Redefined</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3626cc",
+                        "secondary": "#9d4300",
+                        "background": "#f8f9fa",
+                        "surface": "#ffffff",
+                        "on-surface": "#191c1d",
+                        "on-background": "#191c1d"
+                    },
+                    fontFamily: {
+                        "headline": ["Epilogue"],
+                        "body": ["Manrope"],
+                        "label": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(54, 38, 204, 0.05), transparent),
+                        radial-gradient(circle at bottom left, rgba(157, 67, 0, 0.05), transparent);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background selection:bg-primary/20">
+    <!-- Navbar -->
+    <nav class="glass-nav fixed top-0 w-full z-50 border-b border-indigo-500/10 h-16 flex items-center justify-between px-8">
+        <div class="flex items-center gap-2">
+            <span class="text-xl font-black text-indigo-700 tracking-tighter font-headline">The Academic Curator</span>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="index.html" class="font-headline font-bold text-sm text-primary">Home</a>
+            <a href="search.html" class="font-headline font-bold text-sm text-slate-600 hover:text-primary transition-colors">Browse Notes</a>
+            <a href="user-profile.html" class="font-headline font-bold text-sm text-slate-600 hover:text-primary transition-colors">My Profile</a>
+            <a href="admin-dashboard.html" class="font-headline font-bold text-sm text-slate-600 hover:text-primary transition-colors">Admin</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="bg-primary text-white px-6 py-2 rounded-lg font-headline font-bold text-sm hover:opacity-90 active:scale-95 transition-all">Get Started</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen hero-gradient pt-32 pb-20 px-8 flex flex-col items-center justify-center text-center">
+        <div class="max-w-4xl">
+            <span class="bg-indigo-100 text-primary px-4 py-1 rounded-full text-xs font-label font-bold uppercase tracking-widest mb-6 inline-block">Knowledge Preserved</span>
+            <h1 class="text-6xl md:text-8xl font-black font-headline tracking-tighter leading-[0.9] text-on-background mb-8">
+                The Global Commons for <span class="text-primary italic">Student Intelligence.</span>
+            </h1>
+            <p class="text-xl text-slate-500 font-body max-w-2xl mx-auto mb-12 leading-relaxed">
+                Access a high-fidelity repository of verified academic notes, research, and curated wisdom from top institutions worldwide.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="search.html" class="bg-primary text-white px-8 py-4 rounded-xl font-headline font-bold text-lg hover:shadow-2xl hover:shadow-primary/20 transition-all active:scale-95 flex items-center gap-2">
+                    <span class="material-symbols-outlined">search</span> Browse Catalog
+                </a>
+                <a href="user-profile.html" class="bg-white border border-slate-200 px-8 py-4 rounded-xl font-headline font-bold text-lg hover:bg-slate-50 transition-all active:scale-95">
+                    Upload Your Work
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 px-8 bg-white">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <p class="text-4xl font-headline font-black text-indigo-700">50K+</p>
+                <p class="text-sm font-label text-slate-500 uppercase tracking-widest mt-2">Verified Notes</p>
+            </div>
+            <div class="text-center">
+                <p class="text-4xl font-headline font-black text-indigo-700">200+</p>
+                <p class="text-sm font-label text-slate-500 uppercase tracking-widest mt-2">Institutions</p>
+            </div>
+            <div class="text-center">
+                <p class="text-4xl font-headline font-black text-indigo-700">12M</p>
+                <p class="text-sm font-label text-slate-500 uppercase tracking-widest mt-2">Total Reads</p>
+            </div>
+            <div class="text-center">
+                <p class="text-4xl font-headline font-black text-indigo-700">100%</p>
+                <p class="text-sm font-label text-slate-500 uppercase tracking-widest mt-2">Student Verified</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Features Section -->
+    <section class="py-24 px-8 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-xs font-bold font-label uppercase tracking-[0.2em] text-indigo-600 mb-12">Student Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Registration & Login -->
+                <div class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-2xl mb-8">🔑</div>
+                    <h3 class="text-sm font-bold font-label uppercase tracking-widest text-indigo-600 mb-4">Registration & Login</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Email + password sign-up with OTP email verification. Google OAuth 2.0 for one-click login. JWT access + refresh token flow. Password reset via secure email link. Profile setup: college, branch, semester, avatar.
+                    </p>
+                </div>
+                <!-- Search & Filter Notes -->
+                <div class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl mb-8">🔍</div>
+                    <h3 class="text-sm font-bold font-label uppercase tracking-widest text-indigo-600 mb-4">Search & Filter Notes</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Full-text search across title, subject, and description. Multi-dimensional filters: college, course, branch, semester, subject, year, note type, minimum rating. Sort by: downloads, rating, or newest.
+                    </p>
+                </div>
+                <!-- Download Notes -->
+                <div class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl mb-8">⬇️</div>
+                    <h3 class="text-sm font-bold font-label uppercase tracking-widest text-indigo-600 mb-4">Download Notes</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        One-click secure download via signed AWS S3 URLs (15-min TTL). Download counter visible on each note card. Daily limit enforced per user (free tier: 20 files/day). Full download history in profile.
+                    </p>
+                </div>
+                <!-- User Profile -->
+                <div class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-2xl mb-8">👤</div>
+                    <h3 class="text-sm font-bold font-label uppercase tracking-widest text-indigo-600 mb-4">User Profile</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Public profile: avatar, college, branch, stats (downloads received, average rating given). Private: bookmarked notes, download history, settings, and password change.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="py-32 px-8 bg-surface">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16">
+                <div class="max-w-xl">
+                    <h2 class="text-4xl font-headline font-black tracking-tight mb-4">Top Curated Subjects</h2>
+                    <p class="text-slate-500 font-body">Deep dive into specific domains with notes verified by subject matter experts.</p>
+                </div>
+                <button class="text-primary font-headline font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                    View Catalog <span class="material-symbols-outlined">arrow_right_alt</span>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Subject 1 -->
+                <div class="bg-indigo-50 p-8 rounded-3xl group hover:bg-primary transition-all duration-500 cursor-pointer">
+                    <span class="material-symbols-outlined text-4xl text-primary mb-6 group-hover:text-white transition-colors">psychology</span>
+                    <h3 class="text-2xl font-headline font-bold mb-4 group-hover:text-white transition-colors">Neurobiology</h3>
+                    <p class="text-slate-500 group-hover:text-indigo-100 transition-colors">Advanced synaptic plasticity and neural circuit mappings notes.</p>
+                </div>
+                <!-- Subject 2 -->
+                <div class="bg-orange-50 p-8 rounded-3xl group hover:bg-secondary transition-all duration-500 cursor-pointer">
+                    <span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:text-white transition-colors">functions</span>
+                    <h3 class="text-2xl font-headline font-bold mb-4 group-hover:text-white transition-colors">Advanced Calculus</h3>
+                    <p class="text-slate-500 group-hover:text-orange-100 transition-colors">Multivariate integration and complex analysis practice papers.</p>
+                </div>
+                <!-- Subject 3 -->
+                <div class="bg-emerald-50 p-8 rounded-3xl group hover:bg-emerald-600 transition-all duration-500 cursor-pointer">
+                    <span class="material-symbols-outlined text-4xl text-emerald-600 mb-6 group-hover:text-white transition-colors">terminal</span>
+                    <h3 class="text-2xl font-headline font-bold mb-4 group-hover:text-white transition-colors">Systems Design</h3>
+                    <p class="text-slate-500 group-hover:text-emerald-50 transition-colors">Distributed consensus and architectural scalability blueprints.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 pt-24 pb-12 px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+            <div>
+                <span class="text-2xl font-black text-indigo-700 font-headline mb-4 block">The Academic Curator</span>
+                <p class="text-slate-400 font-body max-w-sm">Elevating the standards of academic sharing. Knowledge is meant to be free, accurate, and accessible.</p>
+            </div>
+            <div class="flex gap-12 md:justify-end">
+                <nav class="flex flex-col gap-4">
+                    <p class="text-xs font-bold font-label uppercase tracking-widest text-slate-400">Navigation</p>
+                    <a href="search.html" class="text-sm font-body text-slate-600 hover:text-primary">Catalog</a>
+                    <a href="user-profile.html" class="text-sm font-body text-slate-600 hover:text-primary">Uploads</a>
+                </nav>
+                <nav class="flex flex-col gap-4">
+                    <p class="text-xs font-bold font-label uppercase tracking-widest text-slate-400">Legal</p>
+                    <a href="#" class="text-sm font-body text-slate-600 hover:text-primary">Privacy</a>
+                    <a href="#" class="text-sm font-body text-slate-600 hover:text-primary">Terms</a>
+                </nav>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-8 border-t border-slate-50 text-center">
+            <p class="text-xs text-slate-400 font-label uppercase tracking-widest">© 2024 THE ACADEMIC CURATOR. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+</body>
+</html>
