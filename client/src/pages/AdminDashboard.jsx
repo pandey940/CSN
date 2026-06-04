@@ -15,7 +15,11 @@ const AdminDashboard = () => {
         const fetchReports = async () => {
             try {
                 const response = await axios.get('/api/admin/reports');
-                setReports(response.data);
+                if (Array.isArray(response.data)) {
+                    setReports(response.data);
+                } else {
+                    throw new Error('API response for reports is not an array');
+                }
             } catch (err) {
                 console.error('Error fetching reports:', err);
                 // Mock reports if API is not running
@@ -41,9 +45,15 @@ const AdminDashboard = () => {
         const fetchPendingNotes = async () => {
             try {
                 const response = await axios.get('/api/notes?status=Pending');
-                setPendingNotes(response.data);
+                if (Array.isArray(response.data)) {
+                    setPendingNotes(response.data);
+                } else {
+                    console.error('Expected array for pending notes, got:', response.data);
+                    setPendingNotes([]);
+                }
             } catch (err) {
                 console.error('Error fetching pending notes:', err);
+                setPendingNotes([]);
             } finally {
                 setLoading(false);
             }

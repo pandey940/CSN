@@ -32,7 +32,11 @@ const Search = () => {
             if (sort) params.append('sort', sort);
 
             const response = await axios.get(`/api/notes?${params.toString()}`);
-            setNotes(response.data);
+            if (Array.isArray(response.data)) {
+                setNotes(response.data);
+            } else {
+                throw new Error('API response is not an array');
+            }
         } catch (err) {
             console.error('Error fetching notes:', err);
             // Fallback mock data
@@ -101,7 +105,10 @@ const Search = () => {
         try {
             const response = await axios.get(`/api/notes/${noteId}/download`);
             const link = document.createElement('a');
-            link.href = response.data.downloadUrl;
+            const downloadUrl = response.data.downloadUrl;
+            link.href = downloadUrl.startsWith('/') && axios.defaults.baseURL 
+                ? `${axios.defaults.baseURL}${downloadUrl}` 
+                : downloadUrl;
             link.download = `${title}.pdf`;
             document.body.appendChild(link);
             link.click();
@@ -116,11 +123,17 @@ const Search = () => {
     const handleView = async (noteId, fileUrl) => {
         try {
             await axios.patch(`/api/notes/${noteId}/view`);
-            window.open(fileUrl, '_blank');
+            const fullFileUrl = fileUrl.startsWith('/') && axios.defaults.baseURL 
+                ? `${axios.defaults.baseURL}${fileUrl}` 
+                : fileUrl;
+            window.open(fullFileUrl, '_blank');
             fetchNotes(); // Refresh to show updated view count
         } catch (err) {
             console.error('View error:', err);
-            window.open(fileUrl, '_blank');
+            const fullFileUrl = fileUrl.startsWith('/') && axios.defaults.baseURL 
+                ? `${axios.defaults.baseURL}${fileUrl}` 
+                : fileUrl;
+            window.open(fullFileUrl, '_blank');
         }
     };
 
@@ -190,7 +203,7 @@ const Search = () => {
                                 {notes.length > 0 ? notes.map(note => (
                                     <div key={note._id || note.id} className="bg-white rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-indigo-900/5 transition-all duration-300 flex flex-col border border-slate-100 text-slate-800">
                                         <div className="h-48 bg-slate-100 relative overflow-hidden flex items-center justify-center">
-                                            {note.thumbnail && !note.thumbnail.includes('example.com') && !note.thumbnail.includes('googleusercontent.com') ? (
+                                            {note.thumbnail && !note.thumbnail.includes('example.com') && !note.thumbnail.includes('googleusercontent.com') && !note.thumbnail.includes('flaticon.com') ? (
                                                 <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src={note.thumbnail} alt={note.title} />
                                             ) : (
                                                 /* Folded page PDF icon graphic */

@@ -25,9 +25,15 @@ const Profile = () => {
             setLoading(true);
             try {
                 const response = await axios.get(`/api/notes?author=${user.name}`);
-                setUserNotes(response.data);
+                if (Array.isArray(response.data)) {
+                    setUserNotes(response.data);
+                } else {
+                    console.error('Expected array of user notes, got:', response.data);
+                    setUserNotes([]);
+                }
             } catch (err) {
                 console.error('Error fetching user notes:', err);
+                setUserNotes([]);
             } finally {
                 setLoading(false);
             }
@@ -55,7 +61,10 @@ const Profile = () => {
         try {
             const response = await axios.get(`/api/notes/${noteId}/download`);
             const link = document.createElement('a');
-            link.href = response.data.downloadUrl;
+            const downloadUrl = response.data.downloadUrl;
+            link.href = downloadUrl.startsWith('/') && axios.defaults.baseURL 
+                ? `${axios.defaults.baseURL}${downloadUrl}` 
+                : downloadUrl;
             link.download = `${title}.pdf`;
             document.body.appendChild(link);
             link.click();
@@ -63,7 +72,9 @@ const Profile = () => {
             
             // Refresh notes to show updated download count
             const updatedNotes = await axios.get(`/api/notes?author=${user.name}`);
-            setUserNotes(updatedNotes.data);
+            if (Array.isArray(updatedNotes.data)) {
+                setUserNotes(updatedNotes.data);
+            }
         } catch (err) {
             console.error('Download error:', err);
             alert('Failed to start download. Please try again.');
@@ -73,17 +84,27 @@ const Profile = () => {
     const handleView = async (noteId, fileUrl) => {
         try {
             // 1. Open the PDF immediately so the user isn't waiting
-            window.open(fileUrl, '_blank');
+            const fullFileUrl = fileUrl.startsWith('/') && axios.defaults.baseURL 
+                ? `${axios.defaults.baseURL}${fileUrl}` 
+                : fileUrl;
+            window.open(fullFileUrl, '_blank');
             
             // 2. Increment view count in backend
             await axios.patch(`/api/notes/${noteId}/view`);
             
             // 3. Refresh notes to show updated view count
             const updatedNotes = await axios.get(`/api/notes?author=${user.name}`);
-            setUserNotes(updatedNotes.data);
+            if (Array.isArray(updatedNotes.data)) {
+                setUserNotes(updatedNotes.data);
+            }
             console.log('View count updated successfully');
         } catch (err) {
             console.error('View tracking error:', err);
+            // Fallback: make sure the PDF opens even if views endpoint fails
+            const fullFileUrl = fileUrl.startsWith('/') && axios.defaults.baseURL 
+                ? `${axios.defaults.baseURL}${fileUrl}` 
+                : fileUrl;
+            window.open(fullFileUrl, '_blank');
         }
     };
 
@@ -189,7 +210,7 @@ const Profile = () => {
                                 {userNotes.map(note => (
                                     <div key={note._id} className="group bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden transition-transform duration-300 hover:-translate-y-1 text-slate-800">
                                         <div className="h-48 bg-slate-100 relative overflow-hidden flex items-center justify-center">
-                                            {note.thumbnail && !note.thumbnail.includes('example.com') && !note.thumbnail.includes('googleusercontent.com') ? (
+                                            {note.thumbnail && !note.thumbnail.includes('example.com') && !note.thumbnail.includes('googleusercontent.com') && !note.thumbnail.includes('flaticon.com') ? (
                                                 <img className="w-full h-full object-cover" src={note.thumbnail} alt="Note thumbnail" />
                                             ) : (
                                                 /* Folded page PDF icon graphic */

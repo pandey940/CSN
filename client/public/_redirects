@@ -1,2 +1,8 @@
+# Redirect all API and uploads requests to the backend server (if hosted separately)
+# Place these BEFORE the general SPA redirect to ensure correct routing.
+# /api/*      https://your-backend-api-url.com/api/:splat      200!
+# /uploads/*  https://your-backend-api-url.com/uploads/:splat  200!
+
 # Redirect all client-side routes to index.html for React Router SPA support
 /*  /index.html  200
+
