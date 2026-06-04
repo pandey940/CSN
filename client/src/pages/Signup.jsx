@@ -37,8 +37,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 p-6 selection:bg-primary/20">
-      <div className="w-full max-w-2xl bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-12 border border-slate-100">
+    <div className="min-h-screen flex items-center justify-center bg-background p-6 selection:bg-primary/20">
+      <div className="w-full max-w-2xl bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-12 border border-slate-100 text-slate-800">
         <div className="text-center mb-12">
           <h1 className="font-headline text-5xl font-black text-primary tracking-tighter mb-4">Join the Curator</h1>
           <p className="font-body text-slate-500 text-lg">Create your account to start sharing and learning</p>

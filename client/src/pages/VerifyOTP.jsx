@@ -48,8 +48,8 @@ const VerifyOTP = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-50 p-6 selection:bg-primary/20">
-            <div className="w-full max-w-lg bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-12 border border-slate-100 flex flex-col gap-8">
+        <div className="min-h-screen flex items-center justify-center bg-background p-6 selection:bg-primary/20">
+            <div className="w-full max-w-lg bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-12 border border-slate-100 flex flex-col gap-8 text-slate-800">
                 <div className="text-center">
                     <h1 className="font-headline text-5xl font-black text-primary tracking-tighter mb-4">Verify Email</h1>
                     <p className="font-body text-slate-500 text-lg">Enter the 6-digit code sent to <span className="font-bold text-slate-900">{email}</span></p>
@@ -73,7 +73,7 @@ const VerifyOTP = () => {
                         <input
                             type="text"
                             maxLength="6"
-                            className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-4 px-6 focus:ring-4 focus:ring-primary/10 focus:bg-white focus:border-primary/20 transition-all outline-none font-body text-on-surface text-center text-3xl tracking-[0.5em] font-black"
+                            className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-4 px-6 focus:ring-4 focus:ring-primary/10 focus:bg-white focus:border-primary/20 transition-all outline-none font-body text-slate-800 text-center text-3xl tracking-[0.5em] font-black"
                             placeholder="000000"
                             value={otp}
                             onChange={(e) => setOtp(e.target.value)}

@@ -39,14 +39,45 @@ const Search = () => {
             setNotes([
                 {
                     id: 1,
-                    title: "Triple Integrals & Polar Coordinates Master Guide",
-                    description: "Complete set of notes covering multivariate integration with worked examples and exam patterns from last 5 years.",
-                    subject: "Advanced Calculus",
+                    title: "OOPS",
+                    description: "College students notes on Object Oriented Programming Systems covering inheritance, polymorphism, and encapsulation.",
+                    subject: "MISC",
                     fileType: "PDF",
-                    author: "Prof. Aris T.",
-                    rating: 4.9,
-                    downloadCount: "2.4k",
-                    thumbnail: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRnvvksimOikm30ok2Yu5Y5LgAEi5y1e_L66JZnhTmgYUCvAGKH9SjkhvSiZaKhvwCwm1x-dMygjgjc7ZyZSkks7ubYec8sqi465Pujp5akzPvWhwlwuR2AN3YKrhhijvPj0dKUle3WZjuvXOZAIM7qFhvWpfFGn2UfH-5FH9qvnj90oUkcOzJ8XwmqhFjE5BngqYAHc8nQuze-0lxFTRwCUwjh5FW4eSXY2e_KaJWWizrZl1fBGUJUJUt9Mv7Q-dCygEIKPX1FW1i"
+                    author: "Deepika Mishra",
+                    college: "IIT Bombay",
+                    branch: "CS",
+                    rating: 3.8,
+                    downloadCount: 3,
+                    viewCount: 1,
+                    thumbnail: ""
+                },
+                {
+                    id: 2,
+                    title: "computer science",
+                    description: "Introductory computer science concepts and foundational algorithms cheat sheet.",
+                    subject: "MISC",
+                    fileType: "PDF",
+                    author: "Deepika Mishra",
+                    college: "IIT Bombay",
+                    branch: "DBMS",
+                    rating: 4.5,
+                    downloadCount: 1,
+                    viewCount: 3,
+                    thumbnail: ""
+                },
+                {
+                    id: 3,
+                    title: "demo",
+                    description: "Quick reference card and sample note template.",
+                    subject: "DEMO",
+                    fileType: "PDF",
+                    author: "Deepika Mishra",
+                    college: "IIT Bombay",
+                    branch: "DEMO",
+                    rating: 4.0,
+                    downloadCount: 0,
+                    viewCount: 1,
+                    thumbnail: ""
                 }
             ]);
         } finally {
@@ -94,7 +125,7 @@ const Search = () => {
     };
 
     return (
-        <div className="bg-surface text-on-surface font-body min-h-screen">
+        <div className="bg-background text-white font-body min-h-screen">
             <Navbar />
             
             <div className="flex pt-16">
@@ -104,26 +135,26 @@ const Search = () => {
                     <div className="max-w-6xl mx-auto mb-12">
                         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
                             <div>
-                                <h1 className="font-headline text-5xl font-black text-on-surface tracking-tighter mb-2">{searchQuery || 'All Resources'}</h1>
-                                <p className="font-body text-on-surface-variant">
+                                <h1 className="font-headline text-5xl font-black text-white tracking-tighter mb-2">{searchQuery || 'All Resources'}</h1>
+                                <p className="font-body text-slate-400">
                                     Found <span className="text-primary font-bold">{notes.length} resources</span> matching your academic criteria.
                                 </p>
                             </div>
                             
-                            <div className="flex items-center gap-4 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
-                                <span className="text-xs font-label uppercase tracking-wider text-slate-500 px-3">Sort by</span>
+                            <div className="flex items-center gap-4 bg-white p-1.5 rounded-full border border-slate-200 text-slate-800 shadow-sm">
+                                <span className="text-xs font-label uppercase tracking-wider text-slate-400 px-3 border-r border-slate-200">SORT BY</span>
                                 <div className="flex gap-1">
                                     {['downloads', 'rating', 'newest'].map(type => (
                                         <button 
                                             key={type}
                                             onClick={() => setSort(type)}
-                                            className={`px-4 py-2 rounded-lg text-xs font-bold font-headline transition-all ${
+                                            className={`px-4 py-1.5 rounded-full text-xs font-bold font-headline transition-all ${
                                                 sort === type 
-                                                ? 'bg-white shadow-sm text-primary' 
-                                                : 'hover:bg-slate-200 text-on-surface-variant'
+                                                ? 'bg-primary text-white shadow-sm' 
+                                                : 'hover:bg-slate-100 text-slate-600'
                                             }`}
                                         >
-                                            {type.charAt(0).toUpperCase() + type.slice(1).replace('downloads', 'Most Downloaded').replace('rating', 'Top Rated')}
+                                            {type.charAt(0).toUpperCase() + type.slice(1).replace('downloads', 'Downloads').replace('rating', 'Rating')}
                                         </button>
                                     ))}
                                 </div>
@@ -133,17 +164,17 @@ const Search = () => {
                         {/* Active Filters */}
                         <div className="flex flex-wrap gap-2 mb-10">
                             {filters.branch.map(b => (
-                                <div key={b} className="flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-label font-bold border border-primary/20">
+                                <div key={b} className="flex items-center gap-2 bg-[#120f3a] text-indigo-300 px-3 py-1.5 rounded-full text-xs font-label font-bold border border-indigo-500/30">
                                     {b} <X size={14} className="cursor-pointer" onClick={() => removeFilter('branch', b)} />
                                 </div>
                             ))}
                             {filters.semester > 1 && (
-                                <div className="flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-label font-bold border border-primary/20">
+                                <div className="flex items-center gap-2 bg-[#120f3a] text-indigo-300 px-3 py-1.5 rounded-full text-xs font-label font-bold border border-indigo-500/30">
                                     Semester {filters.semester} <X size={14} className="cursor-pointer" onClick={() => removeFilter('semester')} />
                                 </div>
                             )}
                             {filters.minRating > 0 && (
-                                <div className="flex items-center gap-2 bg-secondary/10 text-secondary px-3 py-1.5 rounded-full text-xs font-label font-bold border border-secondary/20">
+                                <div className="flex items-center gap-2 bg-[#120f3a] text-indigo-300 px-3 py-1.5 rounded-full text-xs font-label font-bold border border-indigo-500/30">
                                     {filters.minRating}.0+ Rating <X size={14} className="cursor-pointer" onClick={() => removeFilter('minRating')} />
                                 </div>
                             )}
@@ -157,14 +188,24 @@ const Search = () => {
                         ) : (
                             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                                 {notes.length > 0 ? notes.map(note => (
-                                    <div key={note._id || note.id} className="bg-white rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-indigo-900/5 transition-all duration-300 flex flex-col border border-slate-100">
-                                        <div className="h-48 bg-slate-200 relative overflow-hidden">
-                                            <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src={note.thumbnail} alt={note.title} />
+                                    <div key={note._id || note.id} className="bg-white rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-indigo-900/5 transition-all duration-300 flex flex-col border border-slate-100 text-slate-800">
+                                        <div className="h-48 bg-slate-100 relative overflow-hidden flex items-center justify-center">
+                                            {note.thumbnail && !note.thumbnail.includes('example.com') && !note.thumbnail.includes('googleusercontent.com') ? (
+                                                <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src={note.thumbnail} alt={note.title} />
+                                            ) : (
+                                                /* Folded page PDF icon graphic */
+                                                <div className="w-20 h-28 bg-white rounded-lg shadow-sm border border-slate-200 relative flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                                                    <div className="absolute top-0 right-0 w-5 h-5 bg-slate-100 border-l border-b border-slate-200 rounded-bl-lg"></div>
+                                                    <div className="w-16 h-8 bg-red-500 text-white font-headline font-black text-xs text-center flex items-center justify-center rounded">
+                                                        PDF
+                                                    </div>
+                                                </div>
+                                            )}
                                             <div className="absolute top-4 left-4">
                                                 <span className="bg-primary/90 backdrop-blur-md text-white px-3 py-1 rounded text-[10px] font-label font-bold tracking-widest uppercase">Verified Note</span>
                                             </div>
                                             <button 
-                                                onClick={() => handleDownload(note._id, note.title)}
+                                                onClick={() => handleDownload(note._id || note.id, note.title)}
                                                 className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md hover:bg-black/70 text-white flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all"
                                             >
                                                 <Download size={14} />
@@ -172,8 +213,9 @@ const Search = () => {
                                             </button>
                                         </div>
                                         <div className="p-6 flex-1 flex flex-col">
+                                            <p className="text-[10px] font-label font-bold uppercase tracking-widest text-slate-400 mb-2">{(note.branch || 'CS') + ' • ' + (note.subject || 'MISC')}</p>
                                             <div className="flex justify-between items-start mb-3">
-                                                <h3 className="font-headline font-bold text-lg leading-tight group-hover:text-primary transition-colors">{note.title}</h3>
+                                                <h3 className="font-headline font-bold text-lg leading-tight group-hover:text-primary transition-colors text-slate-900">{note.title}</h3>
                                                 <span className="bg-slate-100 text-slate-600 text-[10px] font-label px-2 py-0.5 rounded-full uppercase">{note.fileType}</span>
                                             </div>
                                             <p className="text-sm text-slate-500 line-clamp-2 mb-6 font-body">{note.description}</p>
@@ -185,7 +227,7 @@ const Search = () => {
                                                     <div>
                                                         <span className="block text-xs font-label font-bold text-slate-700 leading-none mb-1">{note.author}</span>
                                                         <div className="flex items-center gap-1 text-[10px] text-slate-400">
-                                                            <Star size={10} className="text-secondary fill-secondary" />
+                                                            <Star size={10} className="text-amber-500 fill-amber-500" />
                                                             <span>{note.rating}</span>
                                                         </div>
                                                     </div>
@@ -194,13 +236,13 @@ const Search = () => {
                                                     onClick={() => handleView(note._id || note.id, note.fileUrl)}
                                                     className="flex items-center gap-2 text-primary bg-primary/5 hover:bg-primary/10 px-4 py-2 rounded-lg transition-all text-xs font-bold border border-primary/10"
                                                 >
-                                                    <Eye size={14} /> View PDF
+                                                    <Eye size={14} /> View
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                 )) : (
-                                    <div className="col-span-full text-center py-20 text-slate-500">
+                                    <div className="col-span-full text-center py-20 text-slate-500 bg-white rounded-xl border border-slate-100 shadow-sm">
                                         No resources found matching your criteria.
                                     </div>
                                 )}
@@ -209,16 +251,16 @@ const Search = () => {
 
                         {/* Pagination */}
                         <div className="mt-20 flex justify-center">
-                            <div className="flex items-center gap-1 bg-slate-100 p-2 rounded-2xl shadow-sm border border-slate-200">
-                                <button className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-200 transition-colors">
+                            <div className="flex items-center gap-1 bg-white p-2 rounded-full shadow-sm border border-slate-200 text-slate-800">
+                                <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors text-slate-600">
                                     <ChevronLeft size={20} />
                                 </button>
-                                <button className="w-10 h-10 flex items-center justify-center rounded-xl bg-primary text-white font-bold">1</button>
-                                <button className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-200 transition-colors text-slate-600">2</button>
-                                <button className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-200 transition-colors text-slate-600">3</button>
+                                <button className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white font-bold">1</button>
+                                <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors text-slate-600">2</button>
+                                <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors text-slate-600">3</button>
                                 <span className="w-10 h-10 flex items-center justify-center text-slate-400">...</span>
-                                <button className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-200 transition-colors text-slate-600">12</button>
-                                <button className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-200 transition-colors">
+                                <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors text-slate-600">12</button>
+                                <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors text-slate-600">
                                     <ChevronRight size={20} />
                                 </button>
                             </div>

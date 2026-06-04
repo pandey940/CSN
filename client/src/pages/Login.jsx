@@ -33,8 +33,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 p-6 selection:bg-primary/20">
-      <div className="w-full max-w-lg bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-12 border border-slate-100 flex flex-col gap-8">
+    <div className="min-h-screen flex items-center justify-center bg-background p-6 selection:bg-primary/20">
+      <div className="w-full max-w-lg bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-12 border border-slate-100 flex flex-col gap-8 text-slate-800">
         <div className="text-center">
           <h1 className="font-headline text-5xl font-black text-primary tracking-tighter mb-4">Welcome Back</h1>
           <p className="font-body text-slate-500 text-lg">Log in to access your academic curator</p>
@@ -51,7 +51,7 @@ const Login = () => {
             <label className="block font-label text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Email Address</label>
             <input
               type="email"
-              className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-4 px-6 focus:ring-4 focus:ring-primary/10 focus:bg-white focus:border-primary/20 transition-all outline-none font-body text-on-surface"
+              className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-4 px-6 focus:ring-4 focus:ring-primary/10 focus:bg-white focus:border-primary/20 transition-all outline-none font-body text-slate-800"
               placeholder="name@university.edu"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -63,7 +63,7 @@ const Login = () => {
             <label className="block font-label text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Password</label>
             <input
               type="password"
-              className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-4 px-6 focus:ring-4 focus:ring-primary/10 focus:bg-white focus:border-primary/20 transition-all outline-none font-body text-on-surface"
+              className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-4 px-6 focus:ring-4 focus:ring-primary/10 focus:bg-white focus:border-primary/20 transition-all outline-none font-body text-slate-800"
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
