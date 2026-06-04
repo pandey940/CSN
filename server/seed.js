@@ -1,8 +1,9 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const Note = require('./models/Note');
 const User = require('./models/User');
 
-const mongoURI = 'mongodb://127.0.0.1:27017/academic-curator';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/academic-curator';
 
 const sampleNotes = [
     {
@@ -18,6 +19,8 @@ const sampleNotes = [
         status: "Approved",
         author: "Prof. Aris T.",
         fileUrl: "https://example.com/notes1.pdf",
+        rating: 5,
+        downloadCount: 240,
         thumbnail: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRnvvksimOikm30ok2Yu5Y5LgAEi5y1e_L66JZnhTmgYUCvAGKH9SjkhvSiZaKhvwCwm1x-dMygjgjc7ZyZSkks7ubYec8sqi465Pujp5akzPvWhwlwuR2AN3YKrhhijvPj0dKUle3WZjuvXOZAIM7qFhvWpfFGn2UfH-5FH9qvnj90oUkcOzJ8XwmqhFjE5BngqYAHc8nQuze-0lxFTRwCUwjh5FW4eSXY2e_KaJWWizrZl1fBGUJUJUt9Mv7Q-dCygEIKPX1FW1i"
     },
     {
@@ -33,6 +36,8 @@ const sampleNotes = [
         status: "Approved",
         author: "Sarah Jenkins",
         fileUrl: "https://example.com/notes2.pdf",
+        rating: 4.8,
+        downloadCount: 150,
         thumbnail: "https://lh3.googleusercontent.com/aida-public/AB6AXuCNB8OTLdGKcUiR19ZnSfkEh2sCznnGk72Kdq-QB7yTpxGTkLBm_g1q6Hvs9nf1CeOnrqUCo9BLU5vh_bsn5D8zlqzZhO4TKkUfhCelbT0JS6ttWqCxxZw6_WPZvqSAZAf6U-tkh7km0u_VI2Z4QA-XHYbgsbUnkYTBEkRqRnbZHqCB_aVjGBwSBRA5n2CSPrbzxnny5HV8bs-I2TlmMQqSPSSQ_8TLtvcLL5gYaFdSTolMRhg3MnbOyt7WdXcs_s1nrmI80nPMp6OB"
     },
     {
@@ -48,6 +53,8 @@ const sampleNotes = [
         status: "Pending",
         author: "Alex Rivera",
         fileUrl: "https://example.com/notes3.pdf",
+        rating: 4.2,
+        downloadCount: 85,
         thumbnail: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRnvvksimOikm30ok2Yu5Y5LgAEi5y1e_L66JZnhTmgYUCvAGKH9SjkhvSiZaKhvwCwm1x-dMygjgjc7ZyZSkks7ubYec8sqi465Pujp5akzPvWhwlwuR2AN3YKrhhijvPj0dKUle3WZjuvXOZAIM7qFhvWpfFGn2UfH-5FH9qvnj90oUkcOzJ8XwmqhFjE5BngqYAHc8nQuze-0lxFTRwCUwjh5FW4eSXY2e_KaJWWizrZl1fBGUJUJUt9Mv7Q-dCygEIKPX1FW1i"
     }
 ];
