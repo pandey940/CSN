@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Eye, EyeOff } from 'lucide-react';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const Signup = () => {
     branch: '',
     semester: '1'
   });
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -119,14 +121,23 @@ const Signup = () => {
 
           <div className="md:col-span-1 space-y-2">
             <label className="block font-label text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Password</label>
-            <input
-              type="password"
-              name="password"
-              className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-4 px-6 focus:ring-4 focus:ring-primary/10 focus:bg-white transition-all outline-none"
-              placeholder="••••••••"
-              onChange={handleChange}
-              required
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-4 pl-6 pr-14 focus:ring-4 focus:ring-primary/10 focus:bg-white transition-all outline-none"
+                placeholder="••••••••"
+                onChange={handleChange}
+                required
+              />
+              <button
+                type="button"
+                className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
           </div>
 
           <button
