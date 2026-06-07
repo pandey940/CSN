@@ -25,8 +25,13 @@ const Signup = () => {
     try {
       const response = await axios.post('/api/auth/signup', formData);
       console.log('Signup successful:', response.data);
-      // Redirect to OTP verification with email in state
-      navigate('/verify-otp', { state: { email: formData.email } });
+      // Redirect to OTP verification with email and devOtp in state
+      navigate('/verify-otp', { 
+        state: { 
+          email: formData.email,
+          devOtp: response.data.otp
+        } 
+      });
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong. Please try again.');
     } finally {

@@ -10,6 +10,7 @@ const VerifyOTP = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const email = location.state?.email || '';
+    const [devOtp, setDevOtp] = useState(location.state?.devOtp || '');
 
     useEffect(() => {
         if (!email) {
@@ -42,6 +43,9 @@ const VerifyOTP = () => {
         try {
             const response = await axios.post('/api/auth/resend-otp', { email });
             setMessage(response.data.message);
+            if (response.data.otp) {
+                setDevOtp(response.data.otp);
+            }
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to resend OTP.');
         }
@@ -64,6 +68,12 @@ const VerifyOTP = () => {
                 {message && (
                     <div className="p-4 bg-emerald-50 border border-emerald-100 text-emerald-600 rounded-2xl text-sm font-medium text-center">
                         {message}
+                    </div>
+                )}
+
+                {devOtp && (
+                    <div className="p-4 bg-blue-50 border border-blue-100 text-blue-600 rounded-2xl text-sm font-medium text-center">
+                        💡 <strong>Development Mode:</strong> OTP code is <span className="font-bold text-lg select-all tracking-wider">{devOtp}</span>
                     </div>
                 )}
 

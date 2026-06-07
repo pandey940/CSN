@@ -53,7 +53,10 @@ router.post('/signup', async (req, res) => {
             console.log(`User created and OTP sent to: ${email}`);
         }
 
-        res.status(201).json({ message: 'User registered. Please verify OTP sent to email.' });
+        res.status(201).json({ 
+            message: 'User registered. Please verify OTP sent to email.',
+            otp: process.env.NODE_ENV !== 'production' ? otpCode : undefined
+        });
     } catch (err) {
         console.error('Signup error:', err);
         res.status(500).json({ message: err.message });
@@ -80,6 +83,12 @@ router.post('/resend-otp', async (req, res) => {
         const emailSent = await sendOTPEmail(email, otpCode);
         if (!emailSent) {
             console.log(`Failed to resend email to ${email}, OTP: ${otpCode}`);
+            if (process.env.NODE_ENV !== 'production') {
+                return res.json({ 
+                    message: 'Failed to send email, but a new OTP was generated for development.',
+                    otp: otpCode 
+                });
+            }
             return res.status(500).json({ message: 'Failed to send OTP email' });
         }
 
